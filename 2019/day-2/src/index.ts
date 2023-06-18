@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 
-const test = (numbers: number[]) => {
+const program = (numbers: number[]) => {
   let arr = numbers;
 
   for (let i = 0; i < arr.length; i += 4) {
@@ -18,22 +18,15 @@ const test = (numbers: number[]) => {
       arr[numberOfIndex3] = totalSum;
     }
     if (optCode === 2) {
-      console.log('multiply!');
       const newNumber = firstNumber * secondNumber;
-
       arr[numberOfIndex3] = newNumber;
-
-      console.log(newNumber, numberOfIndex3, numbers);
     }
     if (optCode === 99) {
       console.log('end program');
     }
   }
-  return arr;
+  return arr[0];
 };
-
-// const testInput = [1, 9, 10, 3, 2, 3, 11, 0, 99, 30, 40, 50];
-// test(testInput);
 
 try {
   // Read the input file
@@ -42,8 +35,10 @@ try {
 
   // Split the data into an array of numbers
   const numbers: number[] = data.trim().split(',').map(Number);
-  const testprogram = test(numbers);
-  console.log(testprogram);
+  numbers[1] = 12;
+  numbers[2] = 2;
+  const finalOutput = program(numbers);
+  console.log('finalOutput', finalOutput);
 } catch (e) {
   console.error(e);
 }
